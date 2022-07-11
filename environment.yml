@@ -5,25 +5,27 @@ channels:
   - dglteam
   - pytorch
 dependencies:
-  - python=3.7
-  - pytorch 1.10
-  - torchvision
-  - cudatoolkit=10.2
-  - torchaudio
-  - dgl-cuda10.2
-  - rdkit
-  - openbabel
-  - biopython
-  - rdkit
-  - biopandas
-  - pot
-  - dgllife
-  - joblib
-  - pyaml
-  - icecream
-  - matplotlib
-  - tensorboard
-  - psutil
+  - python >= 3.7
+  - pip
+  - pip:
+    - pytorch 1.12
+    - torchvision
+    - cudatoolkit=10.2
+    - torchaudio
+    - dgl-cuda10.2
+    - rdkit
+    - openbabel
+    - biopython
+    - rdkit
+    - biopandas
+    - pot
+    - dgllife
+    - joblib
+    - pyaml
+    - icecream
+    - matplotlib
+    - tensorboard
+    - psutil
 
 
 
