@@ -129,7 +129,7 @@ def inference(args, tune_args=None):
     sys.stdout = Logger(logpath=os.path.join(os.path.dirname(args.checkpoint), f'inference.log'), syspart=sys.stdout)
     sys.stderr = Logger(logpath=os.path.join(os.path.dirname(args.checkpoint), f'inference.log'), syspart=sys.stderr)
     seed_all(args.seed)
-    device = torch.device("cuda:0" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
 
     use_rdkit_coords = args.dataset_params[
         'use_rdkit_coords'] if 'use_rdkit_coords' in args.dataset_params.keys() else False

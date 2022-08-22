@@ -106,7 +106,7 @@ def get_default_args(args, cmdline_args):
     return args
 
 def load_rec_and_model(args):
-    device = torch.device("cuda:0" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
     print(f"device = {device}")
     # sys.exit()
     checkpoint = torch.load(args.checkpoint, map_location=device)

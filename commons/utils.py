@@ -1,7 +1,7 @@
 
 import random
 from argparse import Namespace
-from collections import MutableMapping
+from collections.abc import MutableMapping
 from typing import Dict, Any
 from joblib import Parallel, delayed, cpu_count
 import torch
