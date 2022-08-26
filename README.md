@@ -110,12 +110,12 @@ output.sdf - contains the conformers produced by EquiBind in .sdf format.
 
 # Updated Inference-VS for command line UI and multi-ligand support
  
-  python inference-VS.py --inference_directory='path' -o 'output_path' 
+       python inference-VS.py --inference_directory='path' -o 'output_path' 
   
  This will run equibind on the same file construction as mentioned previously without the need to edit a config file.
  If the target is one receptor and a you would like to run it against an sdf file containing multiple ligands run:
  
-  python inference-VS.py --inference_directory='path' -o 'output_path' --multi_ligand==True
+       python inference-VS.py --inference_directory='path' -o 'output_path' --multi_ligand==True
   
  At current this outputs a corrected SDF file for each contained ligand in its predicted equibind docking pose.
   
