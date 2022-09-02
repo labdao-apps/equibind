@@ -85,6 +85,10 @@ icecream
 matplotlib
 tensorboard
 ````
+If Docker is more your speed for assembling the operating environment, a docker image with docker compose functionality for local bind mounting is included. 
+To set up, assuming you have docker desktop set up, navigate to the main directory where the dockerfiles are located and run:
+
+  docker-compose run --rm app
 
 ## Step 3: Predict Binding Structures!
 
