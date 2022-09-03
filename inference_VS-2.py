@@ -584,16 +584,16 @@ def multi_lig_inference(args):
                                     block_optimized = Chem.MolToMolBlock(optimized_mol)
                                     
                                
-                                print(f'Writing prediction to {args.output_directory}/{name}/lig_library_corrected.sdf')
+                                print(f'Writing prediction to {args.output_directory}/{name}/ligands_predicted.sdf')
                                 
-                                if os.path.isfile(f'{args.output_directory}/{name}/lig_library_corrected.sdf'):
-                                    with open(f'{args.output_directory}/{name}/lig_library_corrected.sdf', "a") as file:
+                                if os.path.isfile(f'{args.output_directory}/{name}/ligands_predicted.sdf'):
+                                    with open(f'{args.output_directory}/{name}/ligands_predicted.sdf', "a") as file:
                                         file.writelines('$$$$ \n')
                                         file.write(block_optimized)
                                         
                                         
                                 else:
-                                    with open(f'{args.output_directory}/{name}/lig_library_corrected.sdf', "w") as file:
+                                    with open(f'{args.output_directory}/{name}/ligands_predicted.sdf', "w") as file:
                                         file.write(block_optimized)
                                         
                                  # Write in Cat function to output all the sdfs in a single file, and write in a score?
