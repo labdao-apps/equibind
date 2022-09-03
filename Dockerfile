@@ -3,7 +3,7 @@ FROM python:3.8-slim
 # installing packages required for installation
 RUN echo "downloading basic packages for installation"
 RUN apt-get update
-RUN apt-get install -y tmux wget curl git nano
+RUN apt-get install -y tmux wget curl nano less
 
 WORKDIR /home/
 
@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements_docker.txt
 COPY . .
 
 #CMD ["bash"]
-CMD ["bash", "run.sh"]
+CMD ["bash", "run.sh 2pri.pdb test.sdf"]
