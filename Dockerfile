@@ -14,4 +14,5 @@ RUN pip install --no-cache-dir -r requirements_docker.txt
 COPY . .
 
 #CMD ["bash"]
-CMD ["bash", "run.sh 2pri.pdb test.sdf"]
+RUN ./run.sh 2pri.pdb test.sdf
+CMD ["bash"]
