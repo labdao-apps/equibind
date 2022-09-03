@@ -4,7 +4,6 @@ import sys
 from copy import deepcopy
 
 import os
-import glob
 
 from dgl import load_graphs
 
@@ -441,8 +440,8 @@ def inference_from_files(args):
                             x, y, z = coords_pred_optimized[i]
                             conf.SetAtomPosition(i, Point3D(float(x), float(y), float(z)))
                             block_optimized = Chem.MolToMolBlock(optimized_mol)
-                        print(f'Writing prediction to {args.output_directory}/{name}/lig_equibind_corrected.sdf')
-                        with open(f'{args.output_directory}/{name}/lig_equibind_corrected.sdf', "w") as newfile:
+                        print(f'Writing prediction to {args.output_directory}/{name}/{lig_names[0]}.sdf')
+                        with open(f'{args.output_directory}/{name}/{lig_names[0]}.sdf', "w") as newfile:
                             newfile.write(block_optimized)
                 all_names.append(name)
 
@@ -583,9 +582,23 @@ def multi_lig_inference(args):
                                     x, y, z = coords_pred_optimized[i]
                                     conf.SetAtomPosition(i, Point3D(float(x), float(y), float(z)))
                                     block_optimized = Chem.MolToMolBlock(optimized_mol)
-                                print(f'Writing prediction to {args.output_directory}/{name}/{mol_name}_corrected.sdf')
-                                with open(f'{args.output_directory}/{name}/{mol_name}_corrected.sdf', "w") as newfile:
-                                        newfile.write(block_optimized)
+                                    
+                               
+                                print(f'Writing prediction to {args.output_directory}/{name}/lig_library_corrected.sdf')
+                                
+                                if os.path.isfile(f'{args.output_directory}/{name}/lig_library_corrected.sdf'):
+                                    with open(f'{args.output_directory}/{name}/lig_library_corrected.sdf', "a") as file:
+                                        file.writelines('$$$$ \n')
+                                        file.write(block_optimized)
+                                        
+                                        
+                                else:
+                                    with open(f'{args.output_directory}/{name}/lig_library_corrected.sdf', "w") as file:
+                                        file.write(block_optimized)
+                                        
+                                 # Write in Cat function to output all the sdfs in a single file, and write in a score?
+                                 
+                                 
                         all_names.append(name)
                         
                     path = os.path.join(os.path.dirname(args.checkpoint), f'predictions_RDKit{use_rdkit_coords}.pt')
