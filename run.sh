@@ -2,16 +2,19 @@
 
 # this script wrapps the multiligand inference function to run more easily with bacalhau based IO
 # preparing an input and output directory
-rm -r out
-mkdir -p in/dummy
-mkdir -p out
+mkdir -p tmp/dummy
 
-# moving protein and ligands into the input directory
-mv in/$1 in/dummy/protein_$1
-mv in/$2 in/dummy/ligands_$2
+# moving files to a temporary directory - required for bacalhaus IO which does not tolerate changes to the input directory
+cp in/* tmp
 
+# renaming protein and ligand files
+mv tmp/$1 tmp/dummy/protein_$1
+mv tmp/$2 tmp/dummy/ligands_$2
+
+
+# running the inference
 echo running
-python inference_VS-2.py -i in -o out --multi_ligand=True
+python inference_VS-2.py -i tmp -o out --multi_ligand=True
 
 echo run finished
 mv out/dummy/* out
