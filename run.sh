@@ -5,7 +5,8 @@
 mkdir -p tmp/dummy
 
 # moving files to a temporary directory - required for bacalhaus IO which does not tolerate changes to the input directory
-cp in/* tmp
+cp $1 tmp
+cp $2 tmp
 
 # renaming protein and ligand files
 mv tmp/$1 tmp/dummy/protein_$1
