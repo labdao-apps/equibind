@@ -37,7 +37,6 @@ build:
   # commands run after the environment is setup
   run:
     - "echo env is ready!"
-   # - "./src/run.sh src/in/2pri.pdb src/in/test.sdf"
 
 # predict.py defines how predictions are run on your model
 predict: "predict.py:Predictor"

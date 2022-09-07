@@ -3,6 +3,7 @@
 # this script wrapps the multiligand inference function to run more easily with bacalhau based IO
 # preparing an input and output directory
 mkdir -p tmp/dummy
+mkdir out
 
 # moving files to a temporary directory - required for bacalhaus IO which does not tolerate changes to the input directory
 cp $1 tmp
