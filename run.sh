@@ -16,7 +16,7 @@ mv tmp/$2 tmp/dummy/ligands_$2
 
 # running the inference
 echo running
-python inference_VS-2.py -i tmp -o out --multi_ligand=True
+python inference_VS_2.py -i tmp -o out --multi_ligand=True
 
 echo run finished
 mv out/dummy/* out
