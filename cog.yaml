@@ -17,7 +17,7 @@ build:
   python_version: "3.8"
 
   # a list of packages in the format <package-name>==<version>
-  # python_packages:
+  python_packages:
     - "torch==1.12.1"
     - "torchaudio==0.12.1"
     - "rdkit==2022.3.5"
@@ -36,8 +36,8 @@ build:
   
   # commands run after the environment is setup
   run:
-    - "echo env is ready! Testing the environment..."
-    - "./run.sh 2pri.pdb test.sdf"
+    - "echo env is ready!"
+   # - "./src/run.sh src/in/2pri.pdb src/in/test.sdf"
 
 # predict.py defines how predictions are run on your model
 predict: "predict.py:Predictor"
