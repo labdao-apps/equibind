@@ -93,7 +93,7 @@ class Predictor(BasePredictor):
         ouput_name = os.listdir(args.output_directory + '/dummy')[0]
         print(ouput_name)
 
-        return(args.output_directory + ouput_name)
+        return(args.output_directory + '/dummy/' + ouput_name)
 
 if __name__ == '__main__':
     p = Predictor()
