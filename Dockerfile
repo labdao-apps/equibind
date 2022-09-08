@@ -15,5 +15,5 @@ COPY . .
 
 #CMD ["bash"]
 # run a test
-RUN ./run.sh 2pri.pdb test.sdf
+RUN python predict.py
 CMD ["bash"]
