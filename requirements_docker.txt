@@ -2,7 +2,6 @@ torch==1.12.1
 torchvision
 torchaudio
 rdkit
-
 openbabel-wheel==3.1.1.5
 biopython
 rdkit
@@ -16,3 +15,7 @@ matplotlib
 tensorboard
 psutil
 dgllife
+
+# fastapi>=0.68.0,<0.69.0
+# pydantic>=1.8.0,<2.0.0
+# uvicorn>=0.15.0,<0.16.0
