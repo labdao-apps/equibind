@@ -90,7 +90,7 @@ class Predictor(BasePredictor):
                 inference_VS_2.inference_from_files(args)
 
         # moving the output file to the output directory
-        ouput_name = os.listdir(args.output_directory)[0]
+        ouput_name = os.listdir(args.output_directory + '/dummy')[0]
         print(ouput_name)
 
         return(args.output_directory + ouput_name)
