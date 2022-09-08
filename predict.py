@@ -13,8 +13,8 @@ class Predictor(BasePredictor):
     def predict(
         self,
         protein: Path = Input(description="a PDB protein structure file"),
-        small_molecule_library: str = Input(description="an SDF file containing >=2 small molecule ligands"),
-    ) -> str:    
+        small_molecule_library: Path = Input(description="an SDF file containing >=2 small molecule ligands"),
+    ) -> Path:    
         # custom changes
         args = inference_VS_2.parse_arguments()
         args = args[0]
@@ -23,7 +23,7 @@ class Predictor(BasePredictor):
 
         # formatting input
         protein = str(protein)
-        #small_molecule_library = str(small_molecule_library)
+        small_molecule_library = str(small_molecule_library)
 
         # isolate the argument path basenames
         protein_base = os.path.basename(protein)
