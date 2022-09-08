@@ -91,10 +91,16 @@ class Predictor(BasePredictor):
 
         # moving the output file to the output directory
         ouput_name = os.listdir(args.output_directory + '/dummy')[0]
-        output_path = args.output_directory + '/dummy/' + ouput_name
-        print(output_path)
-        output = Path(output_path)
+        output_path_sdf = args.output_directory + '/dummy/' + ouput_name
+        print(output_path_sdf)
 
+        # the dataurl go package does not like .sdf files, the input should be given in .txt - something to add to petri
+        output_path = os.path.splitext(output_path_sdf)[0]+'.txt'
+        print("converting library to txt: " + output_path)
+        os.system('mv ' + output_path_sdf + ' ' + output_path)
+
+        # output
+        output = Path(output_path)
         return(output)
 
 if __name__ == '__main__':
