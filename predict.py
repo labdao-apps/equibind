@@ -2,9 +2,12 @@
 # https://github.com/replicate/cog/blob/main/docs/python.md
 
 from cog import BasePredictor, Input, Path
+import sys
+# custom changes
 import inference_VS_2
 import os
 import yaml
+
 
 class Predictor(BasePredictor):
     def setup(self):
@@ -89,4 +92,6 @@ class Predictor(BasePredictor):
 
 if __name__ == '__main__':
     p = Predictor()
-    p.predict(protein = '/src/test/test.pdb', small_molecule_library = '/src/test/test.sdf')
+    p.predict(protein = sys.argv[0], small_molecule_library =  sys.argv[1])
+    # '/src/test/test.pdb'
+    # '/src/test/test.sdf'
