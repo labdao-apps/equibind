@@ -10,27 +10,20 @@ import yaml
 
 
 class Predictor(BasePredictor):
-    def setup(self):
-        """Load the model into memory to make running multiple predictions efficient"""
-        # not implemented right now
-        # ideally setup would load: checkpoint = torch.load(args.checkpoint, map_location=device) from line 460 in inference_VS_2.py
-        # self.model = torch.load("./weights.pth")
-
     def predict(
         self,
         protein: Path = Input(description="a PDB protein structure file"),
         small_molecule_library: Path = Input(description="an SDF file containing >=2 small molecule ligands"),
     ) -> Path:    
-        """Make a prediction given an input protein and small molecule library"""
-        # not implemented right now
-        # ideally predict would call: inference_VS_2.predict(protein, small_molecule_library, self.model)
-        # return "not implemented"
-
-        # defining source and output directory paths after loading default arguments
+        # custom changes
         args = inference_VS_2.parse_arguments()
         args = args[0]
         args.inference_path = '/src/tmp'
         args.output_directory = '/src/out'
+
+        # formatting input
+        protein = str(protein)
+        small_molecule_library = str(small_molecule_library)
 
         # isolate the argument path basenames
         protein_base = os.path.basename(protein)
@@ -92,6 +85,11 @@ class Predictor(BasePredictor):
 
 if __name__ == '__main__':
     p = Predictor()
-    p.predict(protein = sys.argv[0], small_molecule_library =  sys.argv[1])
+    p.predict(protein = '/src/test/test.pdb', small_molecule_library =  '/src/test/test.sdf')
+    
+    # print(sys.argv[0])
+    # print(sys.argv[1])
+    # p.predict(protein = sys.argv[0], small_molecule_library =  sys.argv[1])
+    
     # '/src/test/test.pdb'
     # '/src/test/test.sdf'
