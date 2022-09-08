@@ -23,16 +23,25 @@ class Predictor(BasePredictor):
 
         # formatting input
         protein = str(protein)
-        small_molecule_library = str(small_molecule_library)
+        small_molecule_library = str(small_molecule_library)     
 
         # isolate the argument path basenames
         protein_base = os.path.basename(protein)
         small_molecule_library_base = os.path.basename(small_molecule_library)
 
+        # defining file name
+        protein_destination = args.inference_path + '/dummy/protein_' + protein_base
+        small_molecule_library_destination = args.inference_path + '/dummy/ligands_' + small_molecule_library_base
+
         # moving files from the paths defined in the arguments to the input directory for processing
         os.system('mkdir -p ' + args.inference_path + '/dummy')
-        os.system('mv ' + protein + ' ' + args.inference_path + '/dummy/protein_' + protein_base)
-        os.system('mv ' + small_molecule_library + ' ' + args.inference_path + '/dummy/ligands_' + small_molecule_library_base)
+        os.system('mv ' + protein + ' ' + protein_destination)
+        os.system('mv ' + small_molecule_library + ' ' + small_molecule_library_destination)
+
+        # the dataurl go package does not like .sdf files, the input should be given in .txt - something to add to petri
+        small_molecule_library_sdf = os.path.splitext(small_molecule_library_destination)[0]+'.sdf'
+        print("converting library to sdf:" + small_molecule_library_sdf)
+        os.system('mv ' + small_molecule_library_destination + ' ' + small_molecule_library_sdf)
 
         # adding missings args, only works for one run_dir
         args.multi_ligand = True
