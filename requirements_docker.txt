@@ -16,5 +16,3 @@ matplotlib
 tensorboard
 psutil
 dgllife
-Footer
-
