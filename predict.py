@@ -105,7 +105,7 @@ class Predictor(BasePredictor):
 
 if __name__ == '__main__':
     p = Predictor()
-    p.predict(protein = '/src/test/test.pdb', small_molecule_library =  '/src/test/test.sdf')
+    p.predict(protein = '/src/test/test.pdb', small_molecule_library =  '/src/test/test.txt')
     
     # print(sys.argv[0])
     # print(sys.argv[1])
