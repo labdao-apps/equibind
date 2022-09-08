@@ -40,7 +40,7 @@ class Predictor(BasePredictor):
 
         # the dataurl go package does not like .sdf files, the input should be given in .txt - something to add to petri
         small_molecule_library_sdf = os.path.splitext(small_molecule_library_destination)[0]+'.sdf'
-        print("converting library to sdf:" + small_molecule_library_sdf)
+        print("converting library to sdf: " + small_molecule_library_sdf)
         os.system('mv ' + small_molecule_library_destination + ' ' + small_molecule_library_sdf)
 
         # adding missings args, only works for one run_dir
@@ -90,7 +90,10 @@ class Predictor(BasePredictor):
                 inference_VS_2.inference_from_files(args)
 
         # moving the output file to the output directory
-        return(args.output_directory + '/ligands_predicted.sdf')
+        ouput_name = os.listdir(args.output_directory)[0]
+        print(ouput_name)
+
+        return(args.output_directory + ouput_name)
 
 if __name__ == '__main__':
     p = Predictor()
