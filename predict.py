@@ -91,9 +91,11 @@ class Predictor(BasePredictor):
 
         # moving the output file to the output directory
         ouput_name = os.listdir(args.output_directory + '/dummy')[0]
-        print(ouput_name)
+        output_path = args.output_directory + '/dummy/' + ouput_name
+        print(output_path)
+        output = Path(output_path)
 
-        return(args.output_directory + '/dummy/' + ouput_name)
+        return(output)
 
 if __name__ == '__main__':
     p = Predictor()
