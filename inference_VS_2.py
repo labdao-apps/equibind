@@ -49,6 +49,8 @@ def parse_arguments(arglist = None):
     p.add_argument('-i', '--inference_path', type = str, default = None, help='path to some pdb files for which you want to run inference')
     p.add_argument('--checkpoint', type=str, help='path to .pt file in a checkpoint directory')
     p.add_argument('-o','--output_directory', type=str, default=None, help='path where to put the predicted results')
+    p.add_argument('--protein', type=str, default=None, help='file name of the receptor for multiligand docking')
+    p.add_argument('--small_molecule_library', type=str, default=None, help='file name of the ligands for multiligand docking')
     p.add_argument('--run_corrections', type=bool, default=True,
                    help='whether or not to run the fast point cloud ligand fitting')
     #p.add_argument('--run_dirs', type=list, default=[], help='path directory with saved runs')
