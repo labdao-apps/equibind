@@ -2,17 +2,8 @@ import sys
 import inference_VS_2
 import os
 import yaml
-import fastapi # a package we use to receive and return results via an API
+# import fastapi # a package we use to receive and return results via an API
 
-# define the API and a base message
-app = FastAPI()
-@app.get("/")
-def root():    
-    return "waiting for input"
-
-# below we define the key function used within a docker and 
-# TODO define API endpoint?
-# @app.get("/{input}")
 def predict(
     protein: str, # a PDB protein structure file
     small_molecule_library: str, # "an SDF file containing >=2 small molecule ligands")
@@ -25,20 +16,28 @@ def predict(
 
     # formatting input
     protein = str(protein)
-    small_molecule_library = str(small_molecule_library)     
+    small_molecule_library = str(small_molecule_library) # '/inputs/test.sdf'
+    print("received input: " + protein + " " + small_molecule_library)     
 
     # isolate the argument path basenames
     protein_base = os.path.basename(protein)
     small_molecule_library_base = os.path.basename(small_molecule_library)
 
     # defining file name
-    protein_destination = args.inference_path + '/dummy/protein_' + protein_base
-    small_molecule_library_destination = args.inference_path + '/dummy/ligands_' + small_molecule_library_base
+    protein_destination = args.inference_path + '/dummy/' + protein_base
+    small_molecule_library_destination = args.inference_path + '/dummy/' + small_molecule_library_base
 
     # moving files from the paths defined in the arguments to the input directory for processing
+    print("moving files to " + args.inference_path + " for processing")
     os.system('mkdir -p ' + args.inference_path + '/dummy')
-    os.system('mv ' + protein + ' ' + protein_destination)
-    os.system('mv ' + small_molecule_library + ' ' + small_molecule_library_destination)
+    os.system('cp ' + protein + ' ' + protein_destination)
+    os.system('cp ' + small_molecule_library + ' ' + small_molecule_library_destination)
+
+    # renaming file names to match the expected input pattern
+    print("renaming file names to match the expected input pattern")
+    os.system('mv ' + protein_destination + ' ' + args.inference_path + '/dummy/protein_' + protein_base)
+    os.system('mv ' + small_molecule_library + ' ' + args.inference_path + '/dummy/ligands_' + small_molecule_library_base)
+
 
     # the dataurl go package does not like .sdf files, the input should be given in .txt - something to add to petri
     #small_molecule_library_sdf = os.path.splitext(small_molecule_library_destination)[0]+'.sdf'
@@ -92,19 +91,23 @@ def predict(
             inference_VS_2.inference_from_files(args)
 
     # moving the output file to the output directory
-    ouput_name = os.listdir(args.output_directory + '/dummy')[0]
-    output_path_sdf = args.output_directory + '/dummy/' + ouput_name
+    output_name = os.listdir(args.output_directory + '/dummy')[0]
+    output_path_sdf = args.output_directory + '/dummy/' + output_name
     print(output_path_sdf)
 
     # the dataurl go package does not like .sdf files, the input should be given in .txt - something to add to petri
     # output_path = os.path.splitext(output_path_sdf)[0]+'.txt'
     # print("converting library to txt: " + output_path)
-    # os.system('mv ' + output_path_sdf + ' ' + output_path)
+    output_path = args.output_directory + '/' + output_name
+    os.system('mv ' + output_path_sdf + ' ' + output_path)
 
     # output
     # output = Path(output_path)
-    return(output_path_sdf)
+    print(output_path)
+    return(output_path)
 
 if __name__ == "__main__":
     #sys.argv[1]
-    print(predict(sys.argv[1], sys.argv[2]))
+    print(sys.argv[1])
+    print(sys.argv[2])
+    print(predict(protein = sys.argv[1], small_molecule_library= sys.argv[2]))
