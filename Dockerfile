@@ -5,18 +5,17 @@ RUN echo "downloading basic packages for installation"
 RUN apt-get update
 RUN apt-get install -y tmux wget curl nano less git
 
-WORKDIR /home/
+WORKDIR /src/
 
-COPY requirements_docker.txt ./
+COPY requirements.txt ./
 
-RUN pip install --no-cache-dir -r requirements_docker.txt
-RUN git clone https://github.com/NiklasTR/petri.git
-RUN pip install petri/python
+RUN pip install --no-cache-dir -r requirements.txt
+# RUN git clone https://github.com/NiklasTR/petri.git
+# RUN pip install petri/python
 
 COPY . .
 
-
 # run a test
-RUN python predict.py
+# RUN python predict.py
 # CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
-#CMD ["bash"]
+CMD ["bash"]
