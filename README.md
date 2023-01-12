@@ -1,6 +1,11 @@
 
-# EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction
+# [EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction](https://arxiv.org/abs/2202.05146)
 [![Docker](https://github.com/labdao/lab-equibind/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/labdao/lab-equibind/actions/workflows/docker-publish.yml)
+
+````
+Stärk, H., Ganea, O.-E., Pattanaik, L., Barzilay, R., & Jaakkola, T. (2022). EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction. http://arxiv.org/abs/2202.05146
+````
+
 
 ### [Paper on arXiv](https://arxiv.org/abs/2202.05146)
 
