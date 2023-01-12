@@ -17,7 +17,7 @@ cd /home/ubuntu
 git clone https://github.com/labdao/equibind.git
 
 # running the container on ubuntu linux
-docker run -v /home/ubuntu/equibind/test:/inputs -v /home/ubuntu:/outputs ghcr.io/labdao/equibind:main python main.py --protein /inputs/test.pdb --small_molecule_library /inputs/test.sdf
+docker run -v /home/ubuntu/equibind/test:/inputs -v /home/ubuntu:/outputs ghcr.io/labdao-apps/equibind:main python main.py --protein /inputs/test.pdb --small_molecule_library /inputs/test.sdf
 ```
 
 ## Public Container Execution
