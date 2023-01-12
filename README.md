@@ -12,8 +12,8 @@ Stärk, H., Ganea, O.-E., Pattanaik, L., Barzilay, R., & Jaakkola, T. (2022). Eq
 # pulling the container
 docker pull ghcr.io/labdao-apps/equibind:main
 
-# running the container
-docker run -v your/path/equibind/test:/inputs -v your/path/Desktop:/outputs ghcr.io/labdao/equibind:main python main.py --protein /inputs/test.pdb --small_molecule_library /inputs/test.sdf
+# running the container on ubuntu linux
+docker run -v /home/ubuntu/equibind/test:/inputs -v /home/ubuntu:/outputs ghcr.io/labdao/equibind:main python main.py --protein /inputs/test.pdb --small_molecule_library /inputs/test.sdf
 ```
 
 ## Public Container Execution
