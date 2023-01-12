@@ -19,6 +19,9 @@ docker run -v your/path/equibind/test:/inputs -v your/path/Desktop:/outputs ghcr
 ## Public Container Execution
 
 ```
+# install bacalhau
+curl -sL https://get.bacalhau.org/install.sh | bash
+
 # please note that bacalhau currently only supports one mounted IPFS file
 # in this case we provide a protein structure, called test.pdb, via IPFS
 bacalhau docker run -i bafybeico6n7wgydwaigcnvkrojldc2hk5dbxqp66ezjw5ytis2irq7k2pm ghcr.io/labdao-apps/equibind:main -- python main.py --protein /inputs/test.pdb --small_molecule_library /src/test/test.sdf
