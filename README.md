@@ -2,11 +2,30 @@
 # [EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction](https://arxiv.org/abs/2202.05146)
 [![Docker](https://github.com/labdao/lab-equibind/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/labdao/lab-equibind/actions/workflows/docker-publish.yml)
 
+## Citation
 ````
 Stärk, H., Ganea, O.-E., Pattanaik, L., Barzilay, R., & Jaakkola, T. (2022). EquiBind: Geometric Deep Learning for Drug Binding Structure Prediction. http://arxiv.org/abs/2202.05146
 ````
 
+## Local Container Execution
+```
+# pulling the container
+docker pull ghcr.io/labdao-apps/equibind:main
 
+# running the container
+docker run -v your/path/equibind/test:/inputs -v your/path/Desktop:/outputs ghcr.io/labdao/equibind:main python main.py --protein /inputs/test.pdb --small_molecule_library /inputs/test.sdfdocker
+```
+
+## Public Container Execution
+
+```
+# please note that bacalhau currently only supports one mounted IPFS file
+# in this case we provide a protein structure, called test.pdb, via IPFS
+bacalhau docker run -i bafybeico6n7wgydwaigcnvkrojldc2hk5dbxqp66ezjw5ytis2irq7k2pm ghcr.io/labdao-apps/equibind:main -- python main.py --protein /inputs/test.pdb --small_molecule_library /src/test/test.sdf
+```
+
+
+## Original README
 ### [Paper on arXiv](https://arxiv.org/abs/2202.05146)
 
 EquiBind, is a SE(3)-equivariant geometric deep learning model
