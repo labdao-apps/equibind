@@ -28,7 +28,7 @@ curl -sL https://get.bacalhau.org/install.sh | bash
 
 # please note that bacalhau currently only supports one mounted IPFS file
 # in this case we provide a protein structure, called test.pdb, via IPFS
-bacalhau docker run -i bafybeico6n7wgydwaigcnvkrojldc2hk5dbxqp66ezjw5ytis2irq7k2pm ghcr.io/labdao-apps/equibind:main -- python main.py --protein /inputs/test.pdb --small_molecule_library /src/test/test.sdf
+bacalhau docker run -i QmcfaGkYUi31UWaymucb9g7dSbjTr3PiSN3zDvcHcEK16c ghcr.io/labdao-apps/equibind:main -- python main.py --protein /inputs/test.pdb --small_molecule_library /src/test/test.sdf
 ```
 
 
