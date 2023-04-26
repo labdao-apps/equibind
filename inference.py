@@ -332,8 +332,8 @@ def inference_from_files(args):
         if not name.startswith('.'):
             print(f'\nProcessing {name}: complex {idx + 1} of {len(names)}')
             file_names = os.listdir(os.path.join(args.inference_path, name))
-            rec_name = [i for i in file_names if 'rec.pdb' in i or 'protein' in i][0]
-            lig_names = [i for i in file_names if 'ligand' in i]
+            rec_name = [i for i in file_names if '.pdb' in i or 'protein' in i][0]
+            lig_names = [i for i in file_names if '.mol2' in i or '.sdf' in i]
             rec_path = os.path.join(args.inference_path, name, rec_name)
             for lig_name in lig_names:
                 if not os.path.exists(os.path.join(args.inference_path, name, lig_name)):
